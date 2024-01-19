@@ -1,5 +1,5 @@
-import { DoubleLinkedListNode } from "./Node.ts";
-import * as LinkedList from "./types.ts";
+import { DoubleLinkedListNode } from "./Node.js";
+import * as LinkedList from "./types.js";
 
 interface DoubleLinkedListMethods<U> extends LinkedList.LinkedListMethods<U> {
 	traverseBack(): U[];

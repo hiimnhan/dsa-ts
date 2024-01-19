@@ -1,4 +1,4 @@
-import { DoubleLinkedListNode, SingleLinkedListNode } from "./Node.ts";
+import { DoubleLinkedListNode, SingleLinkedListNode } from "./Node.js";
 
 export interface LinkedListMethods<U> {
 	add(data: U): SingleLinkedListNode<U> | DoubleLinkedListNode<U>;
