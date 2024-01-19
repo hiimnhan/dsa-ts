@@ -1,5 +1,5 @@
 import { SingleLinkedListNode } from "./Node.ts";
-import LinkedList from "./types.ts";
+import * as LinkedList from "./types.ts";
 
 class SingleLinkedList<U extends string | number>
 	implements LinkedList.LinkedListMethods<U>
