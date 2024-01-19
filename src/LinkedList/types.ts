@@ -7,10 +7,10 @@ namespace LinkedList {
 			data: U,
 			position: number,
 		): SingleLinkedListNode<U> | DoubleLinkedListNode<U>;
-		deleteAt(position: number): void;
+		deleteAt(position: number): U | null;
 		traverse(): U[];
 		size(): number;
-		search(data: U): SingleLinkedListNode<U> | DoubleLinkedListNode<U> | null;
+		search(data: U): number;
 		display(): void;
 	}
 }
