@@ -9,8 +9,8 @@ class SingleLinkedList<U extends string | number>
 	constructor();
 	constructor(data: U);
 	constructor(data?: U) {
-		this.head = data ? new SingleLinkedListNode(data) : null;
-		this.length = 0;
+		this.head = data !== undefined ? new SingleLinkedListNode(data) : null;
+		this.length = this.head ? 1 : 0;
 	}
 
 	private _insertAtBegin(data: U): SingleLinkedListNode<U> {
