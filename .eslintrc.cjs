@@ -27,6 +27,7 @@ module.exports = {
 					{ enforceForIfStatements: true },
 				],
 				"operator-assignment": "error",
+				"@typescript-eslint/no-namespace": "off",
 			},
 		},
 		{

@@ -16,11 +16,16 @@
 npm i dsa-ts
 ```
 
-```ts
-import { greet } from "dsa-ts";
+## Supported Data structures and algorithms
 
-greet("Hello, world! 💖");
-```
+- [Stack]()
+- [Queue]()
+- [LinkedList]()
+- [Priority Queue]()
+- [Dictionary]()
+- [BinaryTree]()
+
+* [Trie]()
 
 <!-- You can remove this notice if you don't want it 🙂 no worries! -->
 
