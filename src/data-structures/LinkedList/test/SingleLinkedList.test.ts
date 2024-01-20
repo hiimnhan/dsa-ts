@@ -57,6 +57,12 @@ describe("SingleLinkedList", () => {
 			expect(list.pop()).equal(3);
 			expect(list.size).equal(2);
 		});
+		it<LocalTestContext>("The `pop()` function should return null if list is empty", ({
+			list,
+		}) => {
+			const actual = list.pop();
+			expect(actual).toBeNull();
+		});
 		it<LocalTestContext>("The `pushLeft()` function should add data as the new head node", ({
 			list,
 		}) => {

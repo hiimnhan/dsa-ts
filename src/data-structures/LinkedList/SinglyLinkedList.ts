@@ -42,11 +42,10 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	 * TC: O(N)
 	 *
 	 * @returns the data of former tail
-	 * @throws index out of bound if list is empty
 	 * */
-	pop(): T {
+	pop(): T | null {
 		if (!this._head) {
-			throw Error("Index out of bound");
+			return null;
 		}
 
 		const currentTail = this._tail;
