@@ -8,6 +8,7 @@ export default defineConfig({
 			exclude: ["lib"],
 			include: ["src"],
 			reporter: ["html", "lcov"],
+			provider: "v8",
 		},
 		exclude: ["lib", "node_modules"],
 		setupFiles: ["console-fail-test/setup"],

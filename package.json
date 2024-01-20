@@ -26,6 +26,7 @@
 		"prepare": "husky install",
 		"should-semantic-release": "should-semantic-release --verbose",
 		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
 		"tsc": "tsc"
 	},
 	"lint-staged": {
