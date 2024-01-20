@@ -67,6 +67,15 @@ describe("SingleLinkedList", () => {
 			expect(list.head).not.toBeNull();
 			expect(list.head?.data).equal(3);
 		});
+		it<LocalTestContext>("The `pushLeft()` should add data as the new head node if list is empty", ({
+			list,
+		}) => {
+			expect(list.head).toBeNull();
+			list.pushLeft(1);
+			expect(list.size).equal(1);
+			expect(list.head).not.toBeNull();
+			expect(list.head?.data).equal(1);
+		});
 		it<LocalTestContext>("The `popLeft()` function should remove the head node and return its data", ({
 			list,
 		}) => {
@@ -78,6 +87,11 @@ describe("SingleLinkedList", () => {
 			expect(list.size).equal(1);
 			expect(list.head?.data).equal(2);
 			expect(actual).equal(1);
+		});
+		it<LocalTestContext>("The `popLeft()` should return null if the list is empty", ({
+			list,
+		}) => {
+			expect(list.popLeft()).toBeNull();
 		});
 		it<LocalTestContext>("The `insertedAt()` should insert data at given index correctly", ({
 			list,
@@ -125,6 +139,11 @@ describe("SingleLinkedList", () => {
 			list.push(3);
 			expect(list.get(1)).toBe(null);
 			expect(list.get(-1)).toBe(null);
+		});
+		it<LocalTestContext>("The `get()` function should return null if list is empty", ({
+			list,
+		}) => {
+			expect(list.get(0)).toBeNull();
 		});
 		it<LocalTestContext>("The `toArray()` should return an array with correct order of nodes in the list", ({
 			list,

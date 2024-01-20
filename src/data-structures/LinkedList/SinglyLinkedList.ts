@@ -91,11 +91,10 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	 * Remove the current head of the list
 	 * TC: O(1)
 	 * @returns the data of former head
-	 * @throws index out of bound if list is empty
 	 * */
-	popLeft(): T {
+	popLeft(): T | null {
 		if (!this._head) {
-			throw Error("Index out of bound");
+			return null;
 		}
 
 		const node = this._head;

@@ -5,7 +5,7 @@ export interface LinkedListMethods<T> {
 	push(data: T): void;
 	pop(): T;
 	pushLeft(data: T): void;
-	popLeft(): T;
+	popLeft(): T | null;
 	insertAt(index: number, data: T): void;
 	removeAt(index: number): T | null;
 	get(index: number): T | null;
