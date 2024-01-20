@@ -1,5 +1,5 @@
-class SingleLinkedListNode<T> {
-	next: SingleLinkedListNode<T> | null;
+class SinglyLinkedListNode<T> {
+	next: SinglyLinkedListNode<T> | null;
 	data: T;
 	constructor(data: T) {
 		this.data = data;
@@ -18,4 +18,4 @@ class DoubleLinkedListNode<T> {
 	}
 }
 
-export { SingleLinkedListNode, DoubleLinkedListNode };
+export { SinglyLinkedListNode, DoubleLinkedListNode };

@@ -27,6 +27,7 @@ module.exports = {
 					{ enforceForIfStatements: true },
 				],
 				"operator-assignment": "error",
+				"@typescript-eslint/require-await": "off",
 			},
 		},
 		{
@@ -53,6 +54,7 @@ module.exports = {
 				// These on-by-default rules aren't useful in test files.
 				"@typescript-eslint/no-unsafe-assignment": "off",
 				"@typescript-eslint/no-unsafe-call": "off",
+				"@typescript-eslint/require-await": "off",
 			},
 		},
 	],
@@ -79,5 +81,7 @@ module.exports = {
 		"no-useless-rename": "error",
 		"object-shorthand": "error",
 		"@typescript-eslint/no-namespace": "off",
+		"require-await": "off",
+		"@typescript-eslint/require-await": "off",
 	},
 };
