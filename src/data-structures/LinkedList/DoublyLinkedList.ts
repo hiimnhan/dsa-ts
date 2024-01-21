@@ -1,11 +1,14 @@
-import { SinglyLinkedListNode } from "./Node.js";
+import { DoublyLinkedListNode } from "./Node.js";
 import * as LinkedList from "./types.js";
 
-class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
-	private _head: SinglyLinkedListNode<T> | null;
-	private _tail: SinglyLinkedListNode<T> | null;
-	private _size: number;
+interface DoublyLinkedListMethods<T> extends LinkedList.LinkedListMethods<T> {
+	reverse(): DoublyLinkedList<T> | null;
+}
 
+class DoublyLinkedList<T> implements DoublyLinkedListMethods<T> {
+	private _head: DoublyLinkedListNode<T> | null;
+	private _tail: DoublyLinkedListNode<T> | null;
+	private _size: number;
 	constructor() {
 		this._head = null;
 		this._tail = null;
@@ -26,11 +29,12 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	 * @params data the data to be inserted
 	 * */
 	push(data: T): void {
-		const node = new SinglyLinkedListNode(data);
+		const node = new DoublyLinkedListNode(data);
 		if (!this._head) {
 			this._head = node;
 		} else {
 			this._tail!.next = node;
+			node.prev = this._tail;
 		}
 
 		this._tail = node;
@@ -51,18 +55,11 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 		const currentTail = this._tail;
 		if (this._head === this._tail) {
 			this._head = null;
-			this._tail = null;
-			this._size--;
-
-			return currentTail!.data;
+		} else {
+			this._tail!.prev!.next = null;
 		}
 
-		let current = this._head;
-		while (current.next) {
-			current = current.next;
-		}
-
-		this._tail = current;
+		this._tail = this._tail!.prev;
 		this._size--;
 
 		return currentTail!.data;
@@ -74,11 +71,12 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	 * @params data the data to be inserted
 	 * */
 	pushLeft(data: T): void {
-		const node = new SinglyLinkedListNode(data);
-		if (this.isEmpty()) {
+		const node = new DoublyLinkedListNode(data);
+		if (!this._head) {
 			this._head = node;
 			this._tail = node;
 		} else {
+			this._head.prev = node;
 			node.next = this._head;
 			this._head = node;
 		}
@@ -97,6 +95,13 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 		}
 
 		const node = this._head;
+
+		if (this._head === this._tail) {
+			this._tail = null;
+		} else {
+			this._head.next!.prev = null;
+		}
+
 		this._head = this._head.next;
 		this._size--;
 
@@ -124,16 +129,19 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 			return;
 		}
 
-		const newNode = new SinglyLinkedListNode(data);
-		let current: SinglyLinkedListNode<T> | null = this._head;
+		const newNode = new DoublyLinkedListNode(data);
+		let prevNode: DoublyLinkedListNode<T> | null = this._head;
 
 		for (let i = 0; i < index - 1; i++) {
-			current = current!.next;
+			prevNode = prevNode!.next;
 		}
 
-		const nextNode = current!.next;
-		current!.next = newNode;
+		const nextNode = prevNode!.next;
+
+		prevNode!.next = newNode;
+		newNode.prev = prevNode;
 		newNode.next = nextNode;
+		nextNode!.prev = newNode;
 
 		this._size++;
 	}
@@ -145,35 +153,34 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	 * @throws Index out of bound if index is invalid
 	 * */
 	removeAt(index: number): T | null {
-		if (index < 0 || index > this._size) {
-			throw Error("Index out of bound");
+		if (index < 0 || index >= this._size) {
+			throw new Error("Index out of bound");
+		}
+
+		if (this._size === 0) {
+			throw new Error("List is empty");
 		}
 
 		if (index === 0) {
 			return this.popLeft();
 		}
 
-		if (index === this._size) {
+		if (index === this._size - 1) {
 			return this.pop();
 		}
 
-		let prevNode: SinglyLinkedListNode<T> | null;
-		let currentNode: SinglyLinkedListNode<T> | null = this._head;
-
+		let removedNode: DoublyLinkedListNode<T> | null = this._head;
 		for (let i = 0; i < index; i++) {
-			if (i === index - 1) {
-				prevNode = currentNode;
-			}
-
-			currentNode = currentNode!.next;
+			removedNode = removedNode!.next;
 		}
 
-		prevNode!.next = currentNode!.next;
+		removedNode!.prev!.next = removedNode!.next;
+		removedNode!.next!.prev = removedNode!.prev;
+
 		this._size--;
 
-		return currentNode!.data;
+		return removedNode!.data;
 	}
-
 	/*
 	 * Get the data at given index
 	 * TC: O(N)
@@ -230,9 +237,39 @@ class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	 * Get the head of the list
 	 * @returns The head node of the list
 	 * */
-	get head(): SinglyLinkedListNode<T> | null {
+	get head(): DoublyLinkedListNode<T> | null {
 		return this._head;
+	}
+
+	/*
+	 * Reverse the list
+	 * @returns the reversed version of the list
+	 * */
+	reverse(): DoublyLinkedList<T> | null {
+		if (!this._head) {
+			return null;
+		}
+
+		let currentNode: DoublyLinkedListNode<T> | null = this._head;
+		let nextNode: DoublyLinkedListNode<T> | null = null;
+		let prevNode: DoublyLinkedListNode<T> | null = null;
+
+		while (currentNode) {
+			nextNode = currentNode.next;
+			prevNode = currentNode.prev;
+
+			currentNode.next = prevNode;
+			currentNode.prev = nextNode;
+
+			prevNode = currentNode;
+			currentNode = nextNode;
+		}
+
+		this._tail = this._head;
+		this._head = prevNode;
+
+		return this;
 	}
 }
 
-export default SinglyLinkedList;
+export default DoublyLinkedList;

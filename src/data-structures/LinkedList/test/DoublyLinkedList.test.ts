@@ -1,23 +1,23 @@
 import { beforeEach, describe, it } from "vitest";
 import { test } from "vitest";
 import { expect } from "vitest";
-import SinglyLinkedList from "../SinglyLinkedList.ts";
+import DoublyLinkedList from "../DoublyLinkedList.ts";
 
 interface LocalTestContext {
-	list: SinglyLinkedList<number>;
+	list: DoublyLinkedList<number>;
 }
 
-describe("SingleLinkedList", () => {
+describe("DoublyLinkedList", () => {
 	describe("Create instance", () => {
 		test("should initialize with size 0 and empty head", () => {
-			const list = new SinglyLinkedList();
+			const list = new DoublyLinkedList();
 			expect(list.size).equal(0);
 		});
 	});
 
 	describe("Functional tests", () => {
 		beforeEach<LocalTestContext>(async (context: LocalTestContext) => {
-			context.list = new SinglyLinkedList<number>();
+			context.list = new DoublyLinkedList<number>();
 		});
 		it<LocalTestContext>("The `isEmpty()` function should return true if the list is empty", ({
 			list,
@@ -35,18 +35,7 @@ describe("SingleLinkedList", () => {
 		}) => {
 			list.push(1);
 			expect(list.size).equal(1);
-			expect(list.head?.data).equal(1);
-		});
-		it<LocalTestContext>("The head.next.data should return the inserted data using `push()`", ({
-			list,
-		}) => {
-			list.push(1);
-			list.push(2);
-			expect(list.size).equal(2);
-			expect(list.head).not.toBeNull();
-			expect(list.head?.data).equal(1);
-			expect(list.head?.next).not.toBeNull();
-			expect(list.head?.next?.data).equal(2);
+			expect(list.get(0)).equal(1);
 		});
 		it<LocalTestContext>("The `pop()` function should return the data of the tail node", ({
 			list,
@@ -70,8 +59,7 @@ describe("SingleLinkedList", () => {
 			list.push(2);
 			list.pushLeft(3);
 			expect(list.size).equal(3);
-			expect(list.head).not.toBeNull();
-			expect(list.head?.data).equal(3);
+			expect(list.get(0)).equal(3);
 		});
 		it<LocalTestContext>("The `pushLeft()` should add data as the new head node if list is empty", ({
 			list,
@@ -79,8 +67,7 @@ describe("SingleLinkedList", () => {
 			expect(list.head).toBeNull();
 			list.pushLeft(1);
 			expect(list.size).equal(1);
-			expect(list.head).not.toBeNull();
-			expect(list.head?.data).equal(1);
+			expect(list.get(0)).equal(1);
 		});
 		it<LocalTestContext>("The `popLeft()` function should remove the head node and return its data", ({
 			list,
@@ -88,10 +75,9 @@ describe("SingleLinkedList", () => {
 			list.push(1);
 			list.push(2);
 			expect(list.size).equal(2);
-			expect(list.head?.data).equal(1);
 			const actual = list.popLeft();
 			expect(list.size).equal(1);
-			expect(list.head?.data).equal(2);
+			expect(list.get(0)).equal(2);
 			expect(actual).equal(1);
 		});
 		it<LocalTestContext>("The `popLeft()` should return null if the list is empty", ({
@@ -106,8 +92,7 @@ describe("SingleLinkedList", () => {
 			list.push(2);
 			list.insertAt(1, 3);
 			expect(list.size).equal(3);
-			expect(list.head?.next?.data).equal(3);
-			expect(list.head?.next?.next?.data).equal(2);
+			expect(list.get(1)).equal(3);
 		});
 		it<LocalTestContext>("The `insertedAt()` should throw Index out of bound if given index is invalid", ({
 			list,
@@ -123,7 +108,6 @@ describe("SingleLinkedList", () => {
 			list.push(2);
 			const actual = list.removeAt(1);
 			expect(list.size).equal(1);
-			expect(list.head?.next).toBeNull();
 			expect(actual).equal(2);
 		});
 		it<LocalTestContext>("The `removeAt()` should throw Index out of bound if given index is invalid", ({

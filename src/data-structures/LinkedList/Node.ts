@@ -7,9 +7,9 @@ class SinglyLinkedListNode<T> {
 	}
 }
 
-class DoubleLinkedListNode<T> {
-	prev: DoubleLinkedListNode<T> | null;
-	next: DoubleLinkedListNode<T> | null;
+class DoublyLinkedListNode<T> {
+	prev: DoublyLinkedListNode<T> | null;
+	next: DoublyLinkedListNode<T> | null;
 	data: T;
 	constructor(data: T) {
 		this.prev = null;
@@ -18,4 +18,4 @@ class DoubleLinkedListNode<T> {
 	}
 }
 
-export { SinglyLinkedListNode, DoubleLinkedListNode };
+export { SinglyLinkedListNode, DoublyLinkedListNode };
