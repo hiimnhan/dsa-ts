@@ -18,7 +18,7 @@ npm i dsa-ts
 
 ## Supported Data structures and algorithms
 
-- [Stack]()
+- [Stack](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Stack/Stack.ts)
 - [Queue](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Queue/Queue.ts)
 - [LinkedList](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/index.ts)
   - [Singly Linked List](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/SinglyLinkedList.ts)
@@ -26,8 +26,7 @@ npm i dsa-ts
 - [Heap]()
 - [Dictionary]()
 - [BinaryTree]()
-
-* [Trie]()
+- [Trie]()
 
 <!-- You can remove this notice if you don't want it 🙂 no worries! -->
 
