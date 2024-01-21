@@ -1,5 +1,5 @@
 import { SinglyLinkedListNode } from "./Node.js";
-import * as LinkedList from "./types.js";
+import * as LinkedList from "./interfaces.js";
 
 class SinglyLinkedList<T> implements LinkedList.LinkedListMethods<T> {
 	private _head: SinglyLinkedListNode<T> | null;

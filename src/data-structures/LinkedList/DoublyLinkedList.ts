@@ -1,5 +1,5 @@
 import { DoublyLinkedListNode } from "./Node.js";
-import * as LinkedList from "./types.js";
+import * as LinkedList from "./interfaces.js";
 
 interface DoublyLinkedListMethods<T> extends LinkedList.LinkedListMethods<T> {
 	reverse(): DoublyLinkedList<T> | null;
@@ -43,7 +43,7 @@ class DoublyLinkedList<T> implements DoublyLinkedListMethods<T> {
 
 	/*
 	 * Remove the current tail of the list
-	 * TC: O(N)
+	 * TC: O(1)
 	 *
 	 * @returns the data of former tail
 	 * */
