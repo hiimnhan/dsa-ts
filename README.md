@@ -20,8 +20,10 @@ npm i dsa-ts
 
 - [Stack]()
 - [Queue]()
-- [LinkedList]()
-- [Priority Queue]()
+- [LinkedList](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/index.ts)
+  - [Singly Linked List](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/SinglyLinkedList.ts)
+  - [Doubly Linked List](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/DoublyLinkedList.ts)
+- [Heap]()
 - [Dictionary]()
 - [BinaryTree]()
 
