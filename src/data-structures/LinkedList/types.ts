@@ -1,4 +1,4 @@
-import { DoubleLinkedListNode, SinglyLinkedListNode } from "./Node.ts";
+import { DoublyLinkedListNode, SinglyLinkedListNode } from "./Node.ts";
 
 export interface LinkedListMethods<T> {
 	isEmpty(): boolean;
@@ -11,5 +11,5 @@ export interface LinkedListMethods<T> {
 	get(index: number): T | null;
 	toArray(): T[];
 	get size(): number;
-	get head(): SinglyLinkedListNode<T> | DoubleLinkedListNode<T> | null;
+	get head(): SinglyLinkedListNode<T> | DoublyLinkedListNode<T> | null;
 }
