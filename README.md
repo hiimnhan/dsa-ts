@@ -19,7 +19,7 @@ npm i dsa-ts
 ## Supported Data structures and algorithms
 
 - [Stack]()
-- [Queue]()
+- [Queue](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Queue/Queue.ts)
 - [LinkedList](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/index.ts)
   - [Singly Linked List](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/SinglyLinkedList.ts)
   - [Doubly Linked List](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/LinkedList/DoublyLinkedList.ts)
