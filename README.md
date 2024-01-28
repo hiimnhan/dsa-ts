@@ -26,7 +26,8 @@ npm i dsa-ts
 - [Heap](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Heap/Heap.ts)
   - [MinHeap](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Heap/MinHeap.ts)
   - [MaxHeap](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Heap/MaxHeap.ts)
-- [Dictionary]()
+- Collections
+  - [Counter](https://github.com/hiimnhan/dsa-ts/blob/main/src/data-structures/Collections/Counter/index.ts)
 - [BinaryTree]()
 - [Trie]()
 
